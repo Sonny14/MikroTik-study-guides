@@ -1,6 +1,6 @@
 # MikroTik-study-guides
 
-## Here you can find MikroTik scipts and study guides that would help you build your network
+## Here you can find MikroTik scripts and study guides that would help you build your network
 
 
 ---
