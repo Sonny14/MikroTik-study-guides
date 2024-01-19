@@ -2,10 +2,15 @@
 ---
 ## Telegram Notification | Random Mac Sync Fix | UserTXT Based Validity format
 
-### 1.) Paste these on login and logout script in the user profile
-> - Remember to change the "telegram id" and "token" as well as the hostpot folder
-#### On Login Script
-~~~
+## 1.) Paste these on login and logout script in the user profile
+
+<p align="center">
+  <img src="./User Profile.PNG" />
+</p>
+
+### On Login Script
+> Remember to change the "telegram id" and "token" as well as the "hotspot folder"
+~~~bash
 ### Working and Tested Scripts 01July2022
 #     last modified 13 Sept 2022
 #########################################################################################
@@ -170,5 +175,57 @@ if ("$botmail"="$HSemail") do={
 } on-error={/system logging enable 0;  :log error "MainScriptSectionError"}
 #EndOfScript
 ~~~
+
+### On Logout Script
+> Remember to change the values HSprofile and hotspotFolder depending on your setup 
+```bash
+### Logout Event
+####################################
+### ON-LOGOUT
+#####################################
+### onlogout script
+### hotspot folder for HEX put flash/hotspot for haplite put hotspot only
+:local HSuser $user;
+:local HSprofile "default";
+:local hotspotFolder "flash/hotspot";
+:local mac $"mac-address";
+:local macNoCol;
+
+:for i from=0 to=([:len $mac] - 1) do={ 
+  :local char [:pick $mac $i]
+  :if ($char = ":") do={
+	:set $char ""
+  }
+  :set macNoCol ($macNoCol . $char)
+}
+##### AddOn ON-LOGOUT	
+:local HSuser $user;
+:local Limituptime ([/ip hotspot user get "$HSuser" limit-uptime]);
+:local Uptime ([/ip hotspot user get "$HSuser" uptime]);
+:local macadd ([/ip hotspot user get "$HSuser" mac-address]);
+	     :if ( $Limituptime = $Uptime) do={
+		 /system logging enable 0;
+		 :log error "$HSuser Uptime Limit Expired"
+		 /system logging disable 0;
+           /do {/ ip hotspot active remove [find where user="$HSuser"]} on-error={ :log error "HS UserNotFound...timelog: $[/system clock get date] $[/system clock get time]"} 
+           /do {/ ip hotspot user remove [find where name="$HSuser"]} on-error={ :log error "HS UserNotFound...timelog: $[/system clock get date] $[/system clock get time]"}	
+           /do {/ file remove "$hotspotFolder/$macNoCol.txt";} on-error={ :log error "HS MacTextNotFound...timelog: $[/system clock get date] $[/system clock get time]"}			   
+           /do {/ system sche remove [find name=$user];} on-error={ :log error "HS SysSchedNotFound...timelog: $[/system clock get date] $[/system clock get time]"}
+         /system logging enable 0;
+         :log warning "$user ExpiredUserRemove.... timelog: $[/system clock get date] $[/system clock get time]";
+         } else={/system logging enable 0; :log debug "==HSuserLogout.... Voucher Code: $user details: $cause -TimeStamp: $[/system clock get date] $[/system clock get time]";}
+#EOF
+```
+
+## 2.) After applying the changes paste this script in the terminal
+```bash
+/system script add dont-require-permissions=no name=lifetimeincome owner=admin policy=ftp,reboot,read,write,policy,test,password,sniff,sensitive,romon source="0"
+```
+<p align="center">
+  <img src="./Terminal.PNG" />
+</p>
+
+# DONE!
+
 
 
