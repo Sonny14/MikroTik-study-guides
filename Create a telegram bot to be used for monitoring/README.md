@@ -2,18 +2,19 @@
 
 ## 1.) Search for BotFather and click Start
 <p align="center">
-<img src="./botfather.PNG"/>
+  <img src="./botfather.PNG"/>
 </p>
 
 ## 2.) Enter "/newbot" to create a new bot
 <p align="center">
-<img src="./1.PNG"/>
+  <img src="./1.PNG"/>
 </p>
 
 ## 3.) Name your own bot
 <p align="center">
-<img src="./2.PNG"/>
+  <img src="./2.PNG"/>
 </p>
-> - After naming your bot it will give out the token
+
+> After naming your bot it will give out the token 
 
 # DONE!
