@@ -11,10 +11,12 @@
 </p>
 
 ## 3.) Name your own bot
+
+> After naming your bot it will give out a unique token that you will be using base on your demand
 <p align="center">
   <img src="./2.PNG"/>
 </p>
 
-> After naming your bot it will give out the token 
+
 
 # DONE!
