@@ -2,5 +2,5 @@
 
 ## 1.) Search for BotFather
 <p align="center">
-<img source=./botfather.PNG>
+<img src="./botfather.PNG"/>
 </p>
