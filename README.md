@@ -9,8 +9,8 @@
 
 ```
 Facebook: @Ethical.hacker.712
-Telegram: @kllm_frst
-Instagram: @kllm_frst
+Telegram: @gyx_blyyy
+Instagram: @gyx.blyyy
 ```
 
 ### Profile Visits:
